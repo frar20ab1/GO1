@@ -1,20 +1,20 @@
 import * as React from 'react';
-import { View, Text, Platform, StyleSheet, Button, Alert } from 'react-native';
+import { View, Text, Platform, StyleSheet, FlatList, Button, Alert } from 'react-native';
 import firebase from 'firebase/compat';
 import {useEffect, useState} from "react";
 
 
+// component til at vise detaljer om en bruger
+const UserDetails = ({route, navigation}) => {
 
-
-
-const userDetails = ({route, navigation}) => {
-
-    const [user, setUser] = useState({})
+    // bruger usestate til at definere objektets initial state
+    const [user, setUser] = useState({});
 
     useEffect(() => {
         setUser(route.params.user[1]);
         /*Henter brugeren og sætter values ind i return*/
         return () => {
+            //når jeg går væk fra skærmen, skal den tømme objektet
             setUser({})
         }
     });
@@ -22,6 +22,7 @@ const userDetails = ({route, navigation}) => {
     const handleEdit = () => {
         /*Går til edit user routen */
         const user = route.params.user
+        //
         navigation.navigate('Edit user', {user})
     };
 
@@ -45,8 +46,9 @@ const userDetails = ({route, navigation}) => {
             Alert.alert(error.message)
         }
     };
+
     if (!user) {
-        return <Text>No data</Text>;
+        return <Text>Ingen data</Text>;
     }
 
 
@@ -59,7 +61,7 @@ const userDetails = ({route, navigation}) => {
            </Button>
 
            {
-               Object.entries(user).map((item, index) => {
+               Object.entries(user).map((item,index) => {
                    return (
                        <View style={styles.row} key={index}>
                            <Text style={styles.label}>
@@ -79,7 +81,7 @@ const userDetails = ({route, navigation}) => {
     )
 }
 
-export default userDetails;
+export default UserDetails;
 
 const styles = StyleSheet.create({
     container: { flex: 1, justifyContent: 'flex-start' },

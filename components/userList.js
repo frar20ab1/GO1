@@ -4,7 +4,7 @@ import firebase from 'firebase/compat';
 import {useEffect, useState} from "react";
 
 
-const userList = ({navigation}) => {
+const UserList = ({navigation}) => {
 
     const [users, setUsers] = useState()
 
@@ -25,9 +25,9 @@ const userList = ({navigation}) => {
 
     const handleSelectUser = id => {
         /* søger i vores array af users og finde den der matcher id´et */
-        const user = Object.entries(users).find(user[0] === id)
-        navigation.navigate('user details', {user})
-    }
+        const user = Object.entries(users).find(user => user[0] === id)
+        navigation.navigate('User Details', {user});
+    };
 
     //Metoden flatlist forventer et array. Derfor bruges alle values fra vores users objekter og bruger til array
     const userArray = Object.values(users)
@@ -50,7 +50,7 @@ const userList = ({navigation}) => {
     )
 }
 
-export default userList;
+export default UserList;
 
 const styles = StyleSheet.create({
     container: {
