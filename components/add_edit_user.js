@@ -16,7 +16,7 @@ import {useEffect, useState} from "react";
 
 
 
-const add_edit_user = ({navigation,route}) => {
+const Add_edit_user = ({navigation,route}) => {
 
     const initialState = {
         Navn: '',
@@ -54,7 +54,7 @@ const add_edit_user = ({navigation,route}) => {
 
             try {
                 firebase.database()
-                    .ref(`/Cars/${id}`)
+                    .ref(`/Users/${id}`)
                     // Jeg angiver i update hvilke felter der skal opdateres
                     .update({navn, alder, adresse});
                 Alert.alert("Dine informationer er nu opdateret")
@@ -109,7 +109,7 @@ const add_edit_user = ({navigation,route}) => {
     )
 }
 
-export default add_edit_user;
+export default Add_edit_user;
 
 const styles = StyleSheet.create({
     container: {
