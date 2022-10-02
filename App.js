@@ -38,7 +38,7 @@ if (!firebase.apps.length) {
 }
 
 
-
+// stacks til flere views
   const StackNavigation = () => {
     return(
         <Stack.Navigator>
@@ -52,6 +52,7 @@ if (!firebase.apps.length) {
   return (
       <NavigationContainer>
         <Tab.Navigator>
+            {/* tabs der kan ses i bunden af appen*/}
           <Tab.Screen name={'Hjem'} component={StackNavigation} options={{tabBarIcon: () => ( <Ionicons name="home" size={20} />),headerShown:null}}/>
           <Tab.Screen name={'Tilføj bruger'} component={add_edit_user} options={{tabBarIcon: () => ( <Ionicons name="add" size={20} />)}}/>
         </Tab.Navigator>
