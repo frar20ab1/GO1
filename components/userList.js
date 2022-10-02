@@ -3,10 +3,12 @@ import { Text, FlatList, TouchableOpacity, StyleSheet} from 'react-native';
 import firebase from 'firebase/compat';
 import {useEffect, useState} from "react";
 
-
+// component til at vise liste af users
 const UserList = ({navigation}) => {
 
+    // bruger usestate til at definere objektets initial state
     const [users, setUsers] = useState()
+
 
     useEffect(() => {
         if(!users) {
@@ -33,9 +35,10 @@ const UserList = ({navigation}) => {
     const userArray = Object.values(users)
     const userKeys = Object.keys(users)
 
-
+    // returnerer hvordan det skal vises
     return (
         <FlatList data={userArray}
+                    // bruger key til at identificere id på user, og bruger dette id til at håndtere den valgte user
                   keyExtractor={(item, index) => userKeys[index]}
                   renderItem={({item, index}) =>{
                       return(
@@ -52,15 +55,18 @@ const UserList = ({navigation}) => {
 
 export default UserList;
 
+// styles til listen af users
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        borderWidth: 1,
+        borderWidth: 5,
         borderRadius:10,
-        margin: 5,
-        padding: 5,
+        margin: 10,
+        padding: 10,
         height: 50,
-        justifyContent:'center'
+        justifyContent:'center',
+        backgroundColor: "green",
+
     },
     label: { fontWeight: 'bold' },
 });
